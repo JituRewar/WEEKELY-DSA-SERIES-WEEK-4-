@@ -1,0 +1,56 @@
+# 🧮 Day 3 - LeetCode 18: 4Sum
+  You may return the answer in **any order**, but the solution set must not contain duplicate quadruplets.
+
+🔗 **Problem Link:** [LeetCode 18 - 4Sum](https://leetcode.com/problems/4sum/)
+
+---
+
+## 🧠 Approach
+1. **Sorting:** First, sort the array to easily skip duplicates and use two-pointer technique.  
+2. **Two loops + Two pointers:**  
+   - Fix the first two elements (`i` and `j`).
+   - Use two pointers (`left`, `right`) to find the remaining two numbers.
+3. **Avoid duplicates:** Skip repeated numbers to ensure unique quadruplets.
+
+⏱ **Time Complexity:** O(n³)  
+📦 **Space Complexity:** O(1)
+
+---
+
+## 💻 Code Implementation
+```cpp
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        vector<vector<int>> ans;
+        int n=nums.size();
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<n;i++){
+            if(i>0 && nums[i]==nums[i-1]) continue;
+            for(int j=i+1;j<n;){
+                int p=j+1,q=n-1;
+                while(p<q){
+                long sum= (long)nums[i] + (long)nums[j] + (long)nums[p] + (long)nums[q];
+                if(sum>target){
+                    q--;
+                }
+                else if(sum<target){
+                    p++;
+                }
+                else{
+                    ans.push_back({nums[i],nums[j],nums[p],nums[q]});
+                    p++;
+                    q--;
+                    while(p<q && nums[p]==nums[p-1]) p++;
+
+                }
+                }
+                j++;
+                  while(j<n && nums[j]==nums[j-1]) j++;
+            }
+          
+
+        }
+        return ans;
+    }
+};

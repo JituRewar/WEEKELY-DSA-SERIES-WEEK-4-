@@ -1,0 +1,39 @@
+# 🌟 Day 4 - Subarray Sum Equals K (LeetCode 560)
+
+## 📘 Problem Statement
+Given an integer array `nums` and an integer `k`, return the total number of subarrays whose sum equals to `k`.
+
+A **subarray** is a contiguous non-empty sequence of elements within an array.
+
+---
+
+## 🧩 Example
+**Input:**
+class Solution {
+public:
+    int subarraySum(vector<int>& arr, int k) {
+         int n=arr.size();
+        vector<int> prefixsum(n, 0);
+        int count=0;;
+        prefixsum[0]=arr[0];
+        for(int i=1;i<n;i++){
+           prefixsum[i]=prefixsum[i-1]+arr[i];
+        }
+
+        unordered_map<int,int> m;
+        for(int j=0;j<n;j++){
+            if(prefixsum[j]==k) count++;
+
+            int val=prefixsum[j]-k;
+           if(m.find(val)!=m.end()){
+            count+=m[val];
+           } 
+
+           if(m.find(prefixsum[j])==m.end()){
+            m[prefixsum[j]]=0;
+           }
+            m[prefixsum[j]]++;
+        }
+        return count;
+    }
+};

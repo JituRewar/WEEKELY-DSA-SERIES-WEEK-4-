@@ -1,0 +1,60 @@
+# 🌱 Day 5: Introduction to Recursion  
+
+Today in my **Weekly DSA Series (Week 4 Day 5)**, I explored the fundamental concept of **Recursion** — a powerful technique where a function calls itself to solve smaller subproblems.
+
+### 📘 Topics Covered
+- Understanding the concept of recursion  
+- Base case and recursive case  
+- Function call stack visualization  
+- Simple examples: factorial, sum of numbers, and Fibonacci  
+
+### 💡 Example Problem
+**Problem:** Find the factorial of a number using recursion.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+    if (n == 0 || n == 1) return 1; // Base case
+    return n * factorial(n - 1);    // Recursive call
+}
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    cout << "Factorial of " << n << " = " << factorial(n) << endl;
+    return 0;
+}
+
+```cpp
+  # 🌱 Day 5: Introduction to Recursion  
+
+Today in my **Weekly DSA Series (Week 4 Day 5)**, I explored the fundamental concept of **Recursion** — a powerful technique where a function calls itself to solve smaller subproblems.
+
+### 📘 Topics Covered
+- Understanding the concept of recursion  
+- Base case and recursive case  
+- Function call stack visualization  
+- Simple examples: factorial, sum of numbers, and Fibonacci  
+
+### 💡 Example Problem
+**Problem:** Find the factorial of a number using recursion.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+    if (n == 0 || n == 1) return 1; // Base case
+    return n * factorial(n - 1);    // Recursive call
+}
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    cout << "Factorial of " << n << " = " << factorial(n) << endl;
+    return 0;
+}

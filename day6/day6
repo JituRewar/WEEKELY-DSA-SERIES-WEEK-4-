@@ -1,0 +1,87 @@
+# 🚀 Weekly DSA Series – Week 4 Day 6  
+
+## 📚 Topics Covered
+- Binary Search (LeetCode 704)
+- Checking if Array is Sorted
+- Fibonacci Series using Recursion  
+
+## 💡 What I Learned
+Today I focused on understanding **recursion** and how it can simplify problems like **Fibonacci sequence** generation.  
+I also practiced **Binary Search** on a sorted array (LeetCode 704) and learned how to check whether an array is sorted using recursion.  
+
+## 🧩 Problems Solved
+1. **LeetCode 704 – Binary Search**  
+2. **Check if Array is Sorted**  
+3. **Fibonacci Series (Recursive Approach)**  
+
+## 🧠 Key Takeaways
+- Recursion can replace loops when structured carefully.  
+- Binary search reduces complexity from O(n) → O(log n).  
+- Base cases are the backbone of recursion.  
+
+## 🧾 Code Files
+| File | Description |
+|------|--------------|
+| `binary_search.cpp` | Implementation of Binary Search (LeetCode 704) |
+| `sorted_array_check.cpp` | Checks whether an array is sorted recursively |
+| `fibonacci_recursion.cpp` | Prints Fibonacci series using recursion |
+
+---
+
+### 🏆 Consistency Wins
+Another step forward in my DSA journey — exploring recursion in depth and applying it to classic problems.  
+#KeepCoding #Recursion #BinarySearch #DSA #LeetCode #CodeEveryday
+
+  cpp---
+  704---
+  class Solution {
+public:
+    int bs(vector<int>& arr, int tar,int st,int end){
+        if(st<=end){
+            int mid=st+(end-st)/2;
+            if(arr[mid]==tar){
+                return mid;
+            }
+            else if(arr[mid]>=tar){
+              return bs(arr,tar,st,mid-1);
+            }
+            else{
+               return bs(arr,tar,mid+1,end);
+            }
+        }
+        return -1;
+    }
+    int search(vector<int>& arr, int tar) {
+        int st=0,end=arr.size()-1;
+       return bs(arr,tar,st,end);
+     }
+};
+
+sorted array
+  #include<iostream>
+#include<vector>
+using namespace std;
+bool issorted(vector<int> arr,int n){
+    if(n==0 || n==1) return true;
+    return arr[n-1] >= arr[n-2] && issorted(arr,n-1);
+}
+int main(){
+    vector<int> arr={1,2,3,9,5};
+    cout<<issorted(arr,arr.size());
+    return 0;
+
+}
+fibonaci
+  #include<iostream>
+using namespace std;
+int fibnocai(int n){
+    if(n==0 || n==1){
+        return n;
+    }
+    return fibnocai(n-1) + fibnocai(n-2);
+}
+int main(){
+    cout<<fibnocai(6)<<endl;
+    return 0;
+}
+  

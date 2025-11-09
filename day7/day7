@@ -1,0 +1,76 @@
+# 🚀 Weekly DSA Series — Week 4 | Day 7  
+## Topic: Subsets & Subsets II  
+
+Today I solved two important backtracking problems:  
+- **Leetcode 78 — Subsets**  
+- **Leetcode 90 — Subsets II (handling duplicates)**  
+
+These problems strengthen the concept of *recursion and backtracking*, especially understanding how to include/exclude elements and handle duplicate subsets.
+
+---
+
+### 🧩 Problem 1: Subsets (Leetcode 78)
+**Approach:**  
+Used recursion (include–exclude technique) to generate all possible subsets of a given array.
+
+```cpp
+class Solution {
+public:
+    void subsets(vector<int> &arr,vector<int> &ans,int i, vector<vector<int>> &allsubset)
+    {
+        if(i==arr.size()){
+          allsubset.push_back({ans});
+          return;
+        }
+        //include
+        ans.push_back(arr[i]);
+        subsets(arr,ans,i+1,allsubset);
+
+        //exclude
+        ans.pop_back();
+        subsets(arr,ans,i+1,allsubset);
+    }
+
+    vector<vector<int>> subsets(vector<int>& arr) {
+        vector<vector<int>> allsubset;
+        vector<int> ans;
+        subsets(arr,ans,0,allsubset);
+        return allsubset;
+    }
+};
+
+  ### 🧩 Problem 2: Subsets (Leetcode 90)
+**Approach:**  
+Used recursion (include–exclude technique) to generate all possible subsets of a given array.
+
+```cpp
+class Solution {
+public:
+    void subsets(vector<int> &arr,vector<int> &ans,int i, vector<vector<int>> &allsubset)
+    {
+        if(i==arr.size()){
+          allsubset.push_back(ans);
+          return;
+        }
+        //include
+        ans.push_back(arr[i]);
+        subsets(arr,ans,i+1,allsubset);
+
+        //exclude
+        int idx =i+1;
+        ans.pop_back();
+        while(idx<arr.size() && arr[idx]==arr[idx-1]){
+            idx++;
+        }
+        subsets(arr,ans,idx,allsubset);
+    }
+
+    vector<vector<int>> subsetsWithDup(vector<int>& arr) {
+        sort(arr.begin(),arr.end());
+        vector<vector<int>> allsubset;
+        vector<int> ans;
+        subsets(arr,ans,0,allsubset);
+        return allsubset;
+    }
+};
+  
